@@ -1,12 +1,16 @@
-h5{
-    text-align: center;
-    color: #ff5722;
-}
-
-.collection-item.active{
+.collection{
+    border-radius: 0.5em;
     background-color: #ff5722;
 }
 
-a{
+h5{
+    text-align: center;
+    color: #ffffff;
+    font-size: 2em;
+}
+
+.collection-item.active{
+    background-color: #ffebee;
     color: black;
 }
+

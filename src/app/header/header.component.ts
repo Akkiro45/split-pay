@@ -14,5 +14,5 @@ export class HeaderComponent implements OnInit {
 }
 
 $(document).ready(function () {
-  $('.sidenav').sidenav();
+  (<any>$('.sidenav')).sidenav();
 });

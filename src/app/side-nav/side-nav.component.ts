@@ -13,7 +13,3 @@ export class SideNavComponent implements OnInit {
   }
 
 }
-
-$(document).ready(function () {
-  $('.sidenav').sidenav();
-});
