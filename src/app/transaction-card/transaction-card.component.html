@@ -1,0 +1,8 @@
+<div class="root" [ngClass]="{red: isExpense, green: !isExpense}" >
+  <div class="header" >
+    <div class="amount">{{ amount }} &#8377;</div>
+    <div class="btn" *ngIf="showBtn" (click)="onSettle()" >settle</div>
+  </div>
+  <div class="decription">{{ description }}</div>
+  <div class="time">{{ time }}</div>
+</div>

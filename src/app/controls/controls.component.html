@@ -1,0 +1,16 @@
+<div class="root">
+  <form [formGroup]="controlsForm">
+    <input 
+      type="number" 
+      formControlName="amount"
+      placeholder="amount"
+      class="amt-input" >
+    <input 
+      type="text" 
+      formControlName="description"
+      placeholder="description"
+      class="desc-input" >
+    <button class="btn expense" [disabled]="controlsForm.invalid" (click)="onBtnClick(true)" >expense</button>
+    <button *ngIf="showSettleBtn" class="btn settle" [disabled]="controlsForm.invalid" (click)="onBtnClick(false)" >settle</button>
+  </form>
+</div>

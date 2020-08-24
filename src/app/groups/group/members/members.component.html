@@ -1,0 +1,11 @@
+<div class="root">
+  <div *ngIf="showMembers" class="users" >
+    <div class="user" *ngFor="let user of users;" >
+      <div class="username" >{{ user.username }}</div>
+      <div class="email" >{{ user.email }}</div>
+    </div>
+  </div>
+  <div class="handler" (click)="showMembers = !showMembers" >
+    <div>{{ showMembers ? 'hide': 'show' }} members</div>
+  </div>
+</div>

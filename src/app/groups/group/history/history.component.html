@@ -1,0 +1,10 @@
+<div class="history">
+  <app-transaction-card
+    *ngFor="let transaction of history;"
+    [timeStamp]="transaction.timeStamp"
+    [amount]="transaction.amount"
+    [description]="transaction.description"
+    [isExpense]=true
+    [showBtn]=false
+  ></app-transaction-card>
+</div>

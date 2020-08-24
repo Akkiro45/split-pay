@@ -1,0 +1,43 @@
+.root {
+  width: 100%;
+  border-top: 1px solid #cccccc;
+  position: fixed;
+  bottom: 0;
+  padding: 10px 15px;
+  background-color: #FFFFFF;
+}
+form {
+  display: flex;
+  align-items: center;
+}
+.amt-input,
+.desc-input {
+  border-radius: 5px;
+  height: 25px;
+  padding: 0 5px;
+  width: 15%;
+  margin: 0 2px;
+}
+.desc-input {
+  width: 30%;
+}
+.btn {
+  height: 29px;
+  max-width: 120px;
+  width: 17%;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 2px;
+}
+.btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+.expense {
+  background-color: #F44336;
+}
+.settle {
+  background-color: #8BC34A;
+}
