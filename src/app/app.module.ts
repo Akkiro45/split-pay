@@ -10,6 +10,7 @@ import { LandingComponent } from './landing/landing.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PersonalComponent } from './personal/personal.component';
 import { GroupsComponent } from './groups/groups.component';
+import { UsernameFormComponent } from './username-form/username-form.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { GroupsComponent } from './groups/groups.component';
     LandingComponent,
     DashboardComponent,
     PersonalComponent,
-    GroupsComponent
+    GroupsComponent,
+    UsernameFormComponent
   ],
   imports: [
     BrowserModule,

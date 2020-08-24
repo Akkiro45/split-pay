@@ -4,11 +4,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LandingComponent } from './landing/landing.component';
 import { PersonalComponent } from './personal/personal.component';
 import { GroupsComponent } from './groups/groups.component';
+import { UsernameFormComponent } from './username-form/username-form.component'
 
 const routes: Routes = [
   {
     path: '',
     component: LandingComponent
+  },
+  {
+    path: 'username',
+    component: UsernameFormComponent
   },
   {
     path: 'dashboard',

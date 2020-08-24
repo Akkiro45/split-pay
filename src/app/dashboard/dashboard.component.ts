@@ -12,4 +12,10 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  expense = {
+    "owed-total": 1000,
+    "expenses-total": 1000,
+    "owing-total": 1000
+  }
+
 }
