@@ -9,7 +9,6 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { LandingComponent } from './landing/landing.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PersonalComponent } from './personal/personal.component';
-import { GroupsComponent } from './groups/groups.component';
 import { UsernameFormComponent } from './username-form/username-form.component';
 
 @NgModule({
@@ -20,7 +19,6 @@ import { UsernameFormComponent } from './username-form/username-form.component';
     LandingComponent,
     DashboardComponent,
     PersonalComponent,
-    GroupsComponent,
     UsernameFormComponent
   ],
   imports: [
