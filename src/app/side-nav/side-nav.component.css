@@ -1,0 +1,12 @@
+h5{
+    text-align: center;
+    color: #ff5722;
+}
+
+.collection-item.active{
+    background-color: #ff5722;
+}
+
+a{
+    color: black;
+}
