@@ -28,5 +28,6 @@ export class ControlsComponent implements OnInit {
     } else {
       console.log('add settle');
     }
+    this.controlsForm.reset();
   }
 }

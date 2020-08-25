@@ -7,7 +7,7 @@ import { ControlsComponent } from './shared/controls/controls.component';
 import { GroupsComponent } from './groups/groups.component';
 import { GroupComponent } from './groups/group/group.component';
 import { MembersComponent } from './groups/group/members/members.component';
-import { HistoryComponent } from './groups/group/history/history.component';
+import { HistoryComponent } from './shared/history/history.component';
 import * as $ from 'jquery';
 
 import { AppRoutingModule } from './app-routing.module';

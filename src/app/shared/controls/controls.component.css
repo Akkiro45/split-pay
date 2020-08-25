@@ -1,9 +1,10 @@
 .root {
   width: 100%;
-  border-top: 1px solid #cccccc;
-  position: fixed;
+  border: 1px solid #eeeeee;
+  position: absolute;
   bottom: 0;
   padding: 10px 15px;
+  margin-right: 10px;
   background-color: #FFFFFF;
 }
 form {
@@ -12,16 +13,10 @@ form {
 }
 .amt-input,
 .desc-input {
-  border-radius: 5px;
-  height: 25px;
-  padding: 0 5px;
-  width: 15%;
-  margin: 0 2px;
+  height: 25px !important;
+  margin: 0 5px !important;
 }
-.desc-input {
-  width: 30%;
-}
-.btn {
+.custom-btn {
   height: 29px;
   max-width: 120px;
   width: 17%;
@@ -29,9 +24,9 @@ form {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin: 0 2px;
+  margin: 0 5px;
 }
-.btn:disabled {
+.custom-btn:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
 }
@@ -41,3 +36,40 @@ form {
 .settle {
   background-color: #8BC34A;
 }
+
+/* form {
+  display: flex;
+  align-items: center;
+}
+.amt-input,
+.desc-input {
+  border-radius: 5px; 
+  height: 25px;
+  padding: 0 5px;
+  width: 15%;
+  width: 20px;
+  margin: 0 2px;
+}
+.desc-input {
+  width: 30%;
+}
+.btn1 {
+  height: 29px;
+  max-width: 120px;
+  width: 17%;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 2px;
+}
+.btn1:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+.expense {
+  background-color: #F44336;
+}
+.settle {
+  background-color: #8BC34A;
+} */

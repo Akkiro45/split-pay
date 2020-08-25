@@ -1,0 +1,16 @@
+<div class="history" #scrollMe  >
+  <div 
+    *ngFor="let transaction of history;"
+    class="card-container">
+    <div   
+      [ngClass]="{rightCard: transaction.my}">
+      <app-transaction-card
+        [timeStamp]="transaction.timeStamp"
+        [amount]="transaction.amount"
+        [description]="transaction.description"
+        [isExpense]="!transaction.isPaid"
+        [showBtn]="!transaction.isPaid && showSettleBtn"
+      ></app-transaction-card>
+    </div>
+  </div>
+</div>

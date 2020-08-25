@@ -26,11 +26,12 @@ const routes: Routes = [
   },
   {
     path: 'groups',
-    component: GroupsComponent,
-    children: [
-      { path: ':id', component: GroupComponent }
-    ]
+    component: GroupsComponent
   },
+  { 
+    path: 'groups/:id', 
+    component: GroupComponent 
+  }
 ];
 
 @NgModule({

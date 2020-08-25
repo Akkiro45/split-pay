@@ -10,7 +10,7 @@
       formControlName="description"
       placeholder="description"
       class="desc-input" >
-    <button class="btn expense" [disabled]="controlsForm.invalid" (click)="onBtnClick(true)" >expense</button>
-    <button *ngIf="showSettleBtn" class="btn settle" [disabled]="controlsForm.invalid" (click)="onBtnClick(false)" >settle</button>
+    <button class="custom-btn expense" [disabled]="controlsForm.invalid" (click)="onBtnClick(true)" >expense</button>
+    <button *ngIf="showSettleBtn" class="custom-btn settle" [disabled]="controlsForm.invalid" (click)="onBtnClick(false)" >settle</button>
   </form>
 </div>

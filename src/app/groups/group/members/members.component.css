@@ -1,7 +1,8 @@
 .root {
   width: 100%;
-  /* position: absolute;
-  left: 0; */
+  position: absolute;
+  left: 0;
+  top: 0;
   z-index: 100;
 }
 .users {
@@ -9,13 +10,15 @@
   overflow: auto;
 }
 .handler {
-  width: calc(100% - 20px);
+  width: 100%;
   height: 30px;
   border-bottom: 1px solid #cccccc;
   cursor: pointer;
   display: flex;
   align-items: center;
   padding: 0 10px;
+  color: #ffffff;
+  background-color: #FF5722;
 }
 .user {
   background-color: #eeeeee;

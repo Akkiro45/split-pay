@@ -3,7 +3,7 @@
     Create new group
   </div>
   <div class="group-items">
-    <div class="group-item" *ngFor="let group of groups;">
+    <div class="group-item" *ngFor="let group of groups;" [routerLink]="group.id" >
       <div class="group-name" >{{ group.name }}</div>
       <div class="group-size" >{{ group.members }}</div>
     </div>

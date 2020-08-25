@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-group',
@@ -17,16 +17,15 @@ export class GroupComponent implements OnInit {
     { amount: 1000, description: 'Lunch', timestamp: 1598267450974 },
     { amount: 1000, description: 'Lunch', timestamp: 1598267450974 },
     { amount: 1000, description: 'Lunch', timestamp: 1598267450974 },
+    { amount: 1000, description: 'Lunch', timestamp: 1598267450974, my: true },
     { amount: 1000, description: 'Lunch', timestamp: 1598267450974 },
+    { amount: 1000, description: 'Lunch', timestamp: 1598267450974, my: true },
     { amount: 1000, description: 'Lunch', timestamp: 1598267450974 },
-    { amount: 1000, description: 'Lunch', timestamp: 1598267450974 },
-    { amount: 1000, description: 'Lunch', timestamp: 1598267450974 },
-    { amount: 1000, description: 'Lunch', timestamp: 1598267450974 },
+    { amount: 1000, description: 'Lunch', timestamp: 1598267450974, my: true },
   ]
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void { }
+  
 }
