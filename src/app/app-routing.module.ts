@@ -6,6 +6,7 @@ import { PersonalComponent } from './personal/personal.component';
 import { UsernameFormComponent } from './username-form/username-form.component'
 import { GroupsComponent } from './groups/groups.component';
 import { GroupComponent } from './groups/group/group.component';
+import { AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -18,19 +19,27 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'personal',
-    component: PersonalComponent
+    component: PersonalComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'groups',
-    component: GroupsComponent
+    component: GroupsComponent,
+    canActivate: [AuthGuard]
   },
-  { 
-    path: 'groups/:id', 
-    component: GroupComponent 
+  {
+    path: 'groups/:id',
+    component: GroupComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: '**',
+    component: LandingComponent
   }
 ];
 

@@ -19,6 +19,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PersonalComponent } from './personal/personal.component';
 import { UsernameFormComponent } from './username-form/username-form.component';
 
+import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/auth-guard.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,9 +42,27 @@ import { UsernameFormComponent } from './username-form/username-form.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SocialLoginModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '1003783467324-cv7nn44hcmqejd0m3vtv8q7jhv9bacsr.apps.googleusercontent.com'
+            ),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    },
+    AuthService,
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

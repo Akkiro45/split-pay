@@ -3,13 +3,15 @@
         <a href="#!" class="brand-logo">Split Pay</a>
         <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down header">
-            <li><a href="#"><i class="material-icons right">account_circle</i>Username</a></li>
-            <li><a href="#"><i class="fa fa-sign-out right"></i>Logout</a></li>
+            <li *ngIf="!loggedIn"><a (click)="signIn()"><i class="fa fa-sign-in right"></i>Sign In</a></li>
+            <li *ngIf="loggedIn"><i class="material-icons right">account_circle</i>{{user.name}}</li>
+            <li *ngIf="loggedIn"><a (click)="signOut()"><i class="fa fa-sign-out right"></i>Logout</a></li>
         </ul>
     </div>
 </nav>
 
 <ul class="sidenav mobile" id="mobile">
-    <li><a href="#">Username</a></li>
-    <li><a href="#">Logout</a></li>
+    <li *ngIf="!loggedIn"><a (click)="signIn()"><i class="fa fa-sign-in right"></i>Sign In</a></li>
+    <li *ngIf="loggedIn"><i class="material-icons right">account_circle</i>{{user.name}}</li>
+    <li *ngIf="loggedIn"><a (click)="signOut()"><i class="fa fa-sign-out right"></i>Logout</a></li>
 </ul>
