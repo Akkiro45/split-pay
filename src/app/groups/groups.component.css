@@ -7,15 +7,8 @@
 .btn {
   background-color: #FF5722;
   color: #FFFFFF;
-  height: 30px;
-  width: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 7px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   margin: 10px;
-  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 .emty-msg {
   margin-top: 150px;
@@ -55,7 +48,13 @@
   justify-content: center;
   background-color: #FBE9E7;
   border-bottom: 1px solid #FF5722;
+}
+.controls {
+  display: flex;
 } 
+input {
+  padding: 0 10px !important;
+}
 
 @media(max-width: 550px) {
   .group-items {

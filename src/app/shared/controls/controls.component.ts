@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -16,6 +16,8 @@ export class ControlsComponent implements OnInit {
     description: new FormControl('', Validators.required)
   }); 
   @Input() showSettleBtn: boolean;
+  @Input() useCustomHandler: boolean;
+  @Output() onExpenseClick = new EventEmitter();
 
   constructor() { }
 
@@ -24,7 +26,14 @@ export class ControlsComponent implements OnInit {
 
   onBtnClick(isExpense) {
     if(isExpense) {
-      console.log('add expense');
+      if(this.useCustomHandler) {
+        this.onExpenseClick.emit({
+          amount: this.controlsForm.value.amount,
+          description: this.controlsForm.value.description
+        });
+      } else {
+        console.log('add expense');
+      }  
     } else {
       console.log('add settle');
     }
