@@ -6,15 +6,27 @@
   height: calc(100vh - 95px);
 }
 .history {
-  height: calc(100vh - 180px);
-  margin-top: 30px;
+  height: calc(100vh - 200px);
+  /* margin-top: 50px; */
   overflow: auto;
+}
+.btn-container {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+.btn {
+  background-color: #ff5722;
+}
+.controls {
+  width: 100%;
+  margin-top: 60px;
 }
 @media(max-width: 600px) {
   .my {
     height: calc(100vh - 290px);
   }
   .history {
-    height: calc(100vh - 380px);
+    height: calc(100vh - 400px);
   }
 }

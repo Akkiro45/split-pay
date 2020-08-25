@@ -1,6 +1,19 @@
 <div class="my">
+  <div class="btn-container">
+    <div class="btn" (click)="modal.toggleModal()" >
+      Quick pay
+    </div>
+  </div>
   <div class="history">
     <app-history [history]="payment_history" [showSettleBtn]=true ></app-history>
   </div>
   <app-controls [showSettleBtn]=true ></app-controls>
 </div>
+<app-modal #modal>
+  <app-search-users #users ></app-search-users>
+  <div class="controls">
+    <app-controls
+      [useCustomHandler]=true
+      (onExpenseClick)="onExpense($event)" ></app-controls>
+  </div>
+</app-modal>

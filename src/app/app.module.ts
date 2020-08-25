@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { TransactionCardComponent } from './shared/transaction-card/transaction-card.component';
 import { ControlsComponent } from './shared/controls/controls.component';
@@ -18,6 +18,8 @@ import { LandingComponent } from './landing/landing.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PersonalComponent } from './personal/personal.component';
 import { UsernameFormComponent } from './username-form/username-form.component';
+import { ModalComponent } from './shared/modal/modal.component';
+import { SearchUsersComponent } from './shared/search-users/search-users.component';
 
 import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
 import { AuthService } from './services/auth.service';
@@ -37,13 +39,16 @@ import { AuthGuard } from './services/auth-guard.service';
     LandingComponent,
     DashboardComponent,
     PersonalComponent,
-    UsernameFormComponent
+    UsernameFormComponent,
+    ModalComponent,
+    SearchUsersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    SocialLoginModule
+    SocialLoginModule,
+    FormsModule
   ],
   providers: [
     {

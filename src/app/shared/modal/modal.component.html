@@ -1,0 +1,5 @@
+<div class="container" *ngIf="isVisible" (click)="isVisible = !isVisible" >
+  <div class="modal" (click)="stopPropagation($event)" >
+    <ng-content></ng-content>
+  </div>
+</div>

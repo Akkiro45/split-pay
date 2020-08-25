@@ -1,5 +1,5 @@
 <div class="root">
-  <div class="btn" >
+  <div class="btn" (click)="modal.toggleModal()" >
     Create new group
   </div>
   <div class="group-items">
@@ -12,3 +12,15 @@
     No group created yet!
   </div>
 </div>
+<app-modal #modal>
+  <app-search-users #users ></app-search-users>
+  <div class="controls">
+    <input 
+      type="text"
+      placeholder="group name"
+      [(ngModel)]="groupName" />
+    <div class="btn" (click)="onCreateGroup()" >
+      Create
+    </div>
+  </div>
+</app-modal>
