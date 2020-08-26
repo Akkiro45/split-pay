@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { TransactionCardComponent } from './shared/transaction-card/transaction-card.component';
 import { ControlsComponent } from './shared/controls/controls.component';
@@ -24,6 +25,7 @@ import { SearchUsersComponent } from './shared/search-users/search-users.compone
 import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
+import { TotalExpensesService } from './services/total-expenses.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { AuthGuard } from './services/auth-guard.service';
     AppRoutingModule,
     ReactiveFormsModule,
     SocialLoginModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     {
@@ -66,7 +69,8 @@ import { AuthGuard } from './services/auth-guard.service';
       } as SocialAuthServiceConfig,
     },
     AuthService,
-    AuthGuard
+    AuthGuard,
+    TotalExpensesService
   ],
   bootstrap: [AppComponent]
 })

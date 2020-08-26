@@ -12,6 +12,7 @@ export class LandingComponent implements OnInit {
 
   user: SocialUser;
   loggedIn: boolean;
+  tokenValidated: boolean;
 
   constructor(
     private authService: AuthService,
@@ -20,22 +21,27 @@ export class LandingComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  signIn(): void {
+    this.authService.signInWithGoogle();
     this.socialAuthService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
       if (this.loggedIn) {
-        let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
-        this.router.navigate([returnUrl || '/dashboard']);
+        this.tokenValidated = this.authService.validateToken(user.authToken);
+        if (this.tokenValidated) {
+          let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+          this.router.navigate([returnUrl || '/dashboard']);
+        }
+        else {
+          this.router.navigate(['/']);;
+        }
       }
       else {
         this.router.navigate(['/']);;
       }
     });
-  }
-
-  signIn(): void {
-    this.authService.signInWithGoogle();
   }
 
 }

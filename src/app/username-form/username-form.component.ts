@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { SocialAuthService } from 'angularx-social-login';
 
 @Component({
   selector: 'app-username-form',
@@ -8,22 +11,38 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class UsernameFormComponent implements OnInit {
 
+  usernameValid = false;
+  key: any;
+
   controlsForm: FormGroup = new FormGroup({
-    username: new FormControl('', Validators.required)
+    username: new FormControl('', [Validators.required, Validators.minLength(3)])
   });
 
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private socialAuthService: SocialAuthService
+  ) { }
 
   ngOnInit(): void {
   }
 
-  onBtnClick(isValid) {
-    if (isValid) {
-      console.log('User Added');
-    } else {
-      console.log('Invalid Username');
+  onSubmit() {
+    let input = this.controlsForm.value.username;
+    this.usernameValid = this.authService.isFirst(input);
+    if (this.usernameValid) {
+      let isAdded = this.authService.addUser(input);
+      if (isAdded) {
+        localStorage.setItem("key", input);
+        let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+        this.router.navigate([returnUrl || '/dashboard']);
+      }
     }
-    this.controlsForm.reset();
+    else {
+      this.controlsForm.reset();
+      alert("Username already exists!! Enter another username.")
+    }
   }
 
 }

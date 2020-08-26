@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { SocialUser, SocialAuthService } from "angularx-social-login";
 import { Router, ActivatedRoute } from "@angular/router";
@@ -10,8 +10,13 @@ import { Router, ActivatedRoute } from "@angular/router";
 })
 export class HeaderComponent implements OnInit {
 
-  user: SocialUser
-  loggedIn: boolean
+  user: SocialUser;
+  loggedIn: boolean;
+  idToken: any;
+  tokenValidated: boolean;
+  isFirst: boolean;
+  username = null;
+
 
   constructor(
     private authService: AuthService,
@@ -24,22 +29,13 @@ export class HeaderComponent implements OnInit {
     this.socialAuthService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
-      if (this.loggedIn) {
-        let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
-        this.router.navigate([returnUrl || '/dashboard']);
-      }
-      else {
-        this.router.navigate(['/']);
-      }
+      this.username = localStorage.getItem("key");
     });
   }
 
-  signIn(): void {
-    this.authService.signInWithGoogle();
-  }
 
-  signOut(): void {
-    this.authService.signOut();
+  signOut(username): void {
+    this.authService.signOut(username);
   }
 }
 
