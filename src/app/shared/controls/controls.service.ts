@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AppConfigService } from 'src/app/app-config.service';
+import { AppConfigService } from '../../app-config.service';
 import { ActionIndicatorService } from '../action-indicator/action-indicator.service';
 
 @Injectable()
 export class ControlsService {
-  
+
   constructor(
     private http: HttpClient,
     private appConfig: AppConfigService,

@@ -79,9 +79,7 @@ import { SearchUsersService } from './shared/search-users/search-users.service';
     },
     AuthService,
     AuthGuard,
-<<<<<<< HEAD
-    TotalExpensesService
-=======
+    TotalExpensesService,
     ControlsService,
     AppConfigService,
     PesronalService,
@@ -89,7 +87,6 @@ import { SearchUsersService } from './shared/search-users/search-users.service';
     TransactionCardService,
     GroupsService,
     SearchUsersService
->>>>>>> d889186e8a23e92aa1cd6343a59939d7ca2cbe9c
   ],
   bootstrap: [AppComponent]
 })

@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AppConfigService } from '../app-config.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TotalExpensesService {
 
-  baseUrl = 'https://splitpaydemo1.herokuapp.com/api/';
-
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private appConfig: AppConfigService
+  ) { }
 
   getExpenses() {
-    return this.http.get(this.baseUrl + 'users/total-expenses');
+    return this.http.get(this.appConfig.baseURL + 'users/total-expenses');
   }
 }
