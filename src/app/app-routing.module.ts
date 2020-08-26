@@ -26,17 +26,17 @@ const routes: Routes = [
   {
     path: 'personal',
     component: PersonalComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'groups',
     component: GroupsComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'groups/:id',
     component: GroupComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: '**',

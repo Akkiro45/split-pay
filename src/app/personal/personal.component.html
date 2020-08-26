@@ -7,13 +7,14 @@
   <div class="history">
     <app-history [history]="payment_history" [showSettleBtn]=true ></app-history>
   </div>
-  <app-controls [showSettleBtn]=true ></app-controls>
+  <app-controls 
+    [showSettleBtn]=true
+    (onAction)="onMyExpense($event)" ></app-controls>
 </div>
 <app-modal #modal>
   <app-search-users #users ></app-search-users>
   <div class="controls">
     <app-controls
-      [useCustomHandler]=true
-      (onExpenseClick)="onExpense($event)" ></app-controls>
+      (onAction)="onShareExpense($event)" ></app-controls>
   </div>
 </app-modal>

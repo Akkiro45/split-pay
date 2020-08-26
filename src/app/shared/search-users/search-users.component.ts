@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchUsersService } from './search-users.service';
 
 @Component({
   selector: 'app-search-users',
@@ -11,21 +12,29 @@ export class SearchUsersComponent implements OnInit {
   users = [];
   searchUsers = [];
 
-  constructor() { }
+  constructor(private searchUsersService: SearchUsersService) { }
 
   ngOnInit(): void {
   }
 
+  // onSearch() {
+  //   const tempUsers = [
+  //     'akshay',
+  //     'rohit',
+  //     'virat',
+  //     'dhoni'
+  //   ]
+  //   if(tempUsers.includes(this.search)) {
+  //     this.searchUsers.unshift(this.search);
+  //   }
+  // }
   onSearch() {
-    const tempUsers = [
-      'akshay',
-      'rohit',
-      'virat',
-      'dhoni'
-    ]
-    if(tempUsers.includes(this.search)) {
-      this.searchUsers.unshift(this.search);
+    const body = {
+      username: this.search
     }
+    this.searchUsersService.searchUsers(body, (data) => {
+      this.searchUsers.unshift(data);
+    });
   }
   getUsers() {
     return this.users;

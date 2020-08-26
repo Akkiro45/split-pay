@@ -8,6 +8,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ControlsComponent implements OnInit {
 
+  @Input() showSettleBtn: boolean;
+  @Output() onAction = new EventEmitter();
   controlsForm: FormGroup = new FormGroup({
     amount: new FormControl('', Validators.compose([
       Validators.required,
@@ -15,28 +17,22 @@ export class ControlsComponent implements OnInit {
     ])),
     description: new FormControl('', Validators.required)
   }); 
-  @Input() showSettleBtn: boolean;
-  @Input() useCustomHandler: boolean;
-  @Output() onExpenseClick = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onBtnClick(isExpense) {
-    if(isExpense) {
-      if(this.useCustomHandler) {
-        this.onExpenseClick.emit({
-          amount: this.controlsForm.value.amount,
-          description: this.controlsForm.value.description
-        });
-      } else {
-        console.log('add expense');
-      }  
-    } else {
-      console.log('add settle');
+  onBtnClick(isExpense: boolean) {
+    let body = {
+      amount: this.controlsForm.value.amount,
+      description: this.controlsForm.value.description,
+      isPaid: !isExpense
     }
+    this.onAction.emit({
+      body,
+      isExpense
+    });
     this.controlsForm.reset();
   }
 }
