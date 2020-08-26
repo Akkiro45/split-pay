@@ -26,9 +26,9 @@ export class PersonalComponent implements OnInit {
   constructor(private controlsService: ControlsService, private pesronalService: PesronalService) { }
 
   ngOnInit(): void {
-    // setTimeout(() => {
-    //   this.fetchExpenses();
-    // }, 100);
+    setTimeout(() => {
+      this.fetchExpenses();
+    }, 100);
   }
 
   onShareExpense(data: any) {
