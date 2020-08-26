@@ -21,7 +21,7 @@ export class AuthService {
 
   validateToken(authToken: string): boolean {
     let request = { token: authToken }
-    this.http.post(this.appConfig.baseURL + 'auth/login', JSON.stringify(request), { observe: 'response' })
+    this.http.post(this.appConfig.baseURL + '/auth/login', JSON.stringify(request), { observe: 'response' })
       .pipe(map(response => {
         //console.log(response);
       }))
@@ -36,7 +36,7 @@ export class AuthService {
 
   isFirst(username: string): boolean {
     let request = { params: { input: username } };
-    this.http.get(this.appConfig.baseURL + 'auth/login/validate-username', request)
+    this.http.get(this.appConfig.baseURL + '/auth/login/validate-username', request)
       .pipe(map(response => {
         //
       }))
@@ -51,7 +51,7 @@ export class AuthService {
 
   addUser(input: string): boolean {
     let request = { username: input };
-    this.http.patch(this.appConfig.baseURL + 'auth/login/username/set', request, { observe: 'response' })
+    this.http.patch(this.appConfig.baseURL + '/auth/login/username/set', request, { observe: 'response' })
       .pipe(map(response => {
         //
       }))

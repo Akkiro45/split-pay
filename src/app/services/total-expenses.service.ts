@@ -13,6 +13,6 @@ export class TotalExpensesService {
   ) { }
 
   getExpenses() {
-    return this.http.get(this.appConfig.baseURL + 'users/total-expenses');
+    return this.http.get(this.appConfig.baseURL + '/users/total-expenses');
   }
 }
