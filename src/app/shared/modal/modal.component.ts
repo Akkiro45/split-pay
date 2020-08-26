@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -7,14 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalComponent implements OnInit {
 
-  isVisible: boolean = false;
+  @Input() isVisible: boolean;
+  @Input() restrictToggle: boolean;
   constructor() { }
 
   ngOnInit(): void {
+    this.isVisible = false;
   }
 
   toggleModal() {
-    this.isVisible = !this.isVisible;
+    if(!this.restrictToggle) {
+      this.isVisible = !this.isVisible;
+    }
   }
   stopPropagation(event) {
     event.stopPropagation();

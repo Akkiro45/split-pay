@@ -1,0 +1,9 @@
+<app-modal [isVisible]="show" [restrictToggle]=true >
+  <div class="container" >
+    <div class="spinner" *ngIf="loading" >
+    </div>
+    <div class="error" *ngIf="error" >
+      {{ error }}
+    </div>
+  </div>
+</app-modal>

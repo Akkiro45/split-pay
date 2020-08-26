@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { GroupsService } from './groups.service';
 
 @Component({
   selector: 'app-groups',
@@ -12,27 +13,40 @@ export class GroupsComponent implements OnInit {
   @ViewChild('users') usersComp;
   groupName: string = '';
   groups = [
-    { id: 1, name: 'group1', members: 5 },
-    { id: 2, name: 'group2', members: 52 },
-    { id: 3, name: 'group3', members: 25 },
-    { id: 4, name: 'group4', members: 3 },
+    // { id: 1, name: 'group1', members: 5 },
   ];
-  constructor(private router: Router) { }
+  constructor(private router: Router, private groupsService: GroupsService) { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.fetchGroups();
+    }, 100);
   }
   
+  fetchGroups() {
+    this.groupsService.getGroups((data) => {
+      this.groups = data;
+    });
+  }
   onCreateGroup() {
     const users = this.usersComp.getUsers();
     if(users.length && this.groupName !== '') {
-      this.groups.unshift({
-        id: this.groups.length,
+      // this.groups.unshift({
+      //   id: this.groups.length,
+      //   name: this.groupName,
+      //   members: users.length
+      // });
+      const body = {
         name: this.groupName,
-        members: users.length
+        members: users
+      }
+      this.groupsService.createGroup(body, (data) => {
+        console.log(data);
+        this.groupName = '';
+        this.usersComp.resetUsers();
+        this.modal.toggleModal();
+        this.fetchGroups();
       });
-      this.groupName = '';
-      this.usersComp.resetUsers();
-      this.modal.toggleModal();
     }
   }
 

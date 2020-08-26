@@ -1,4 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { GroupsService } from '../groups.service';
+import { Route } from '@angular/compiler/src/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-group',
@@ -8,24 +11,38 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 export class GroupComponent implements OnInit {
 
   users = [
-    { user_id: 1, username: 'username1', email: 'some@email.com' },
-    { user_id: 2, username: 'username2', email: 'some@email.com' },
-    { user_id: 3, username: 'username3', email: 'some@email.com' },
+    // { user_id: 1, username: 'username1', email: 'some@email.com' },
   ]
   payment_history = [
-    { amount: 1000, description: 'Lunch', timestamp: 1598267450974 },
-    { amount: 1000, description: 'Lunch', timestamp: 1598267450974 },
-    { amount: 1000, description: 'Lunch', timestamp: 1598267450974 },
-    { amount: 1000, description: 'Lunch', timestamp: 1598267450974 },
-    { amount: 1000, description: 'Lunch', timestamp: 1598267450974, my: true },
-    { amount: 1000, description: 'Lunch', timestamp: 1598267450974 },
-    { amount: 1000, description: 'Lunch', timestamp: 1598267450974, my: true },
-    { amount: 1000, description: 'Lunch', timestamp: 1598267450974 },
-    { amount: 1000, description: 'Lunch', timestamp: 1598267450974, my: true },
+    // { amount: 1000, description: 'Lunch', timestamp: 1598267450974, my: true },
   ]
 
-  constructor() { }
+  constructor(private groupsService: GroupsService, private route: ActivatedRoute) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.fetchGroup();
+    }, 100);
+  }
   
+  onGroupExpense(data) {
+    const body = {
+      group_id: this.route.snapshot.params['id'],
+      amount: data.body.amount,
+      description: data.body.description
+    }
+    this.groupsService.createGroupExpense(body, (data) => {
+      console.log(data);
+      this.fetchGroup();
+    });
+  }
+
+  fetchGroup() {
+    const id = this.route.snapshot.params['id'];
+    this.groupsService.getGroup(id, (data) => {
+      this.payment_history = data.payment_history,
+      this.users = data.users
+    });
+  }
+
 }
