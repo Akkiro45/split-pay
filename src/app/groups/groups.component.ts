@@ -22,7 +22,7 @@ export class GroupsComponent implements OnInit {
       this.fetchGroups();
     }, 100);
   }
-  
+
   fetchGroups() {
     this.groupsService.getGroups((data) => {
       this.groups = data;
@@ -30,7 +30,7 @@ export class GroupsComponent implements OnInit {
   }
   onCreateGroup() {
     const users = this.usersComp.getUsers();
-    if(users.length && this.groupName !== '') {
+    if (users.length && this.groupName !== '') {
       // this.groups.unshift({
       //   id: this.groups.length,
       //   name: this.groupName,

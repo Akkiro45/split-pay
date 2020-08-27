@@ -29,14 +29,15 @@ export class LandingComponent implements OnInit {
       this.user = user;
       this.loggedIn = (user != null);
       if (this.loggedIn) {
-        this.tokenValidated = this.authService.validateToken(user.authToken);
-        if (this.tokenValidated) {
-          let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
-          this.router.navigate([returnUrl || '/dashboard']);
-        }
-        else {
-          this.router.navigate(['/']);;
-        }
+        this.authService.validateToken(user.authToken, (data) => {
+          if (data) {
+            let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+            this.router.navigate([returnUrl || '/dashboard']);
+          }
+          else {
+            this.router.navigate(['/']);;
+          }
+        });
       }
       else {
         this.router.navigate(['/']);;
