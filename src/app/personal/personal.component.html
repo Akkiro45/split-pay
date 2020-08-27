@@ -5,10 +5,13 @@
     </div>
   </div>
   <div class="history">
-    <app-history [history]="payment_history" [showSettleBtn]=true ></app-history>
+    <app-history 
+      [history]="payment_history" 
+      [showSettleBtn]=true
+      (settle)="fetchExpenses()" ></app-history>
   </div>
   <app-controls 
-    [showSettleBtn]=true
+    
     (onAction)="onMyExpense($event)" ></app-controls>
 </div>
 <app-modal #modal>

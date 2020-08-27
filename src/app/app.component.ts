@@ -12,6 +12,6 @@ export class AppComponent {
 
   constructor(
     public actionIndicator: ActionIndicatorService,
-    private appConfig: AppConfigService
+    public appConfig: AppConfigService
     ) {}
 }

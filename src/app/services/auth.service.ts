@@ -75,13 +75,14 @@ export class AuthService {
   signOut(user: string): void {
     this.actionIndicator.onInit();
     let request = { username: user }
+    const headers = {
+      token: this.appConfig.user.idToken
+    }
     this.socialAuthService.signOut();
-    this.http.post(this.appConfig.baseURL + '/auth/logout', request, { observe: 'response' })
-      .pipe(map(response => {
-        //
-      }))
+    this.http.post(this.appConfig.baseURL + '/auth/logout', request, { observe: 'response', headers })
       .subscribe(
         response => {
+          this.appConfig.user = null;
           this.actionIndicator.onSuccess();
         }, (error: Response) => {
           if (error.status === 200) {

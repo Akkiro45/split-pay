@@ -22,7 +22,7 @@ export class TotalExpensesService {
       token: this.appConfig.user.idToken
     }
     this.actionIndicator.onInit();
-    this.http.get(this.appConfig.baseURL + '/users/total-expenses', { observe: 'response', headers })
+    this.http.get<any[]>(this.appConfig.baseURL + '/users/total-expenses', { observe: 'response', headers })
       .pipe(map(response => {
         let data = {
           owed_total: 0,

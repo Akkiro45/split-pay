@@ -19,6 +19,7 @@
         [isExpense]="!transaction.isPaid"
         [showBtn]="!transaction.isPaid && showSettleBtn"
         [id]="transaction.id"
+        (settle)="settle.emit()"
       ></app-transaction-card>
     </div>
   </div>
