@@ -13,11 +13,11 @@ export class DashboardComponent implements OnInit {
   owing_total: number;
 
   usersOwedTo = [
-    // { username: 1, amount: 1000 },
+    // { name: 1, amount: 1000 },
   ];
 
   usersOwing = [
-    // { user_id: 1, username: "Gurpreet", amount: 2000 }
+    // { user_id: 1, name: "Gurpreet", amount: 2000 }
   ];
 
   constructor(

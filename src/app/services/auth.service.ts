@@ -27,7 +27,7 @@ export class AuthService {
     this.http.post(this.appConfig.baseURL + '/auth/login', {}, { observe: 'response', headers })
       .pipe(map(response => {
         if (response.status === 200) {
-          return true;  
+          return true;
         }
         else if (response.status === 400) {
           return false;
@@ -76,7 +76,10 @@ export class AuthService {
     this.actionIndicator.onInit();
     let request = { username: user }
     this.socialAuthService.signOut();
-    this.http.post(this.appConfig.baseURL + '/auth/logout', request, { observe: 'response' })
+    const headers = {
+      token: this.appConfig.user.idToken
+    }
+    this.http.post(this.appConfig.baseURL + '/auth/logout', request, { observe: 'response', headers })
       .pipe(map(response => {
         //
       }))
