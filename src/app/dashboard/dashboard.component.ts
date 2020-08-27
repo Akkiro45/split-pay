@@ -12,6 +12,14 @@ export class DashboardComponent implements OnInit {
   expenses_total: number;
   owing_total: number;
 
+  usersOwedTo = [
+    // { username: 1, amount: 1000 },
+  ];
+
+  usersOwing = [
+    // { user_id: 1, username: "Gurpreet", amount: 2000 }
+  ];
+
   constructor(
     private expService: TotalExpensesService
   ) { }
@@ -19,6 +27,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.fetchExpenses();
+      this.owedToOthers();
+      this.owedToMe();
     }, 100);
   }
 
@@ -30,4 +40,16 @@ export class DashboardComponent implements OnInit {
         this.owing_total = data['owing_total']
     });
   }
+
+  owedToOthers() {
+    this.expService.getOwedToOthers((data) => {
+      this.usersOwedTo = data;
+    });
+  };
+
+  owedToMe() {
+    this.expService.getOwedToMe((data) => {
+      this.usersOwing = data;
+    });
+  };
 }
