@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import * as moment from 'moment';
 import { TransactionCardService } from './transaction-card.service';
 import { PesronalService } from 'src/app/personal/personal.service';
@@ -16,6 +16,7 @@ export class TransactionCardComponent implements OnInit {
   @Input() showBtn: boolean;
   @Input() timeStamp: number;
   @Input() id: string;
+  @Output() settle = new EventEmitter();
   time: string;
 
   constructor(
@@ -33,9 +34,7 @@ export class TransactionCardComponent implements OnInit {
       amount: this.amount
     }
     this.transactionCardService.settle(body, () => {
-      this.personalService.getExpenses(() => {
-        console.log('fetched!');
-      });
+      this.settle.emit();
     });
   }
 
