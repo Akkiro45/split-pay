@@ -34,21 +34,22 @@ export class DashboardComponent implements OnInit {
 
   fetchExpenses() {
     this.expService.getExpenses((data) => {
-      console.log(data)
       this.owed_total = data['owed_total'],
-        this.expenses_total = data['expenses_total'],
+        this.expenses_total = data['expense_total'],
         this.owing_total = data['owing_total']
     });
   }
 
   owedToOthers() {
     this.expService.getOwedToOthers((data) => {
+      console.log(data);
       this.usersOwedTo = data;
     });
   };
 
   owedToMe() {
     this.expService.getOwedToMe((data) => {
+      console.log(data);
       this.usersOwing = data;
     });
   };

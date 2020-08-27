@@ -24,31 +24,25 @@ export class TotalExpensesService {
     this.actionIndicator.onInit();
     this.http.get(this.appConfig.baseURL + '/users/total-expenses', { observe: 'response', headers })
       .pipe(map(response => {
-        console.log(response);
         let data = {
           owed_total: 0,
           expenses_total: 0,
           owing_total: 0
         }
-        // if(response.body.length > 0) {
-        //   response.body.forEach(el => {
-        //     dat[]
-        //   });
-        // }
-        return {
-          owed_total: response.body['owed_total'],
-          expenses_total: response.body['expense_total'],
-          owing_total: response.body['owing_total']
-        };
+        if(response.body.length > 0) {
+          response.body.forEach(el => {
+            Object.keys(el).forEach(key => {
+              data[key] = el[key];
+            })
+          });
+        }
+        return data;
       }))
       .subscribe(response => {
-        console.log(response)
         this.actionIndicator.onSuccess();
         cb(response);
       }, (error) => {
         this.actionIndicator.onFail('Update username!');
-        
-        console.log(error);
         if (error.status === 405) {
           this.router.navigate(['/username']);
         }
@@ -56,7 +50,10 @@ export class TotalExpensesService {
   }
 
   getOwedToOthers(cb) {
-    this.http.get(this.appConfig.baseURL + '/users/owes', { observe: 'response' })
+    const headers = {
+      token: this.appConfig.user.idToken
+    }
+    this.http.get(this.appConfig.baseURL + '/users/owes', { observe: 'response', headers })
       .pipe(map(response => {
         return response.body;
       }))
@@ -66,7 +63,10 @@ export class TotalExpensesService {
   }
 
   getOwedToMe(cb) {
-    this.http.get(this.appConfig.baseURL + '/users/owed', { observe: 'response' })
+    const headers = {
+      token: this.appConfig.user.idToken
+    }
+    this.http.get(this.appConfig.baseURL + '/users/owed', { observe: 'response', headers })
       .pipe(map(response => {
         return response.body;
       }))

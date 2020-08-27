@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActionIndicatorService } from './shared/action-indicator/action-indicator.service';
+import { AppConfigService } from './app-config.service';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,8 @@ import { ActionIndicatorService } from './shared/action-indicator/action-indicat
 export class AppComponent {
   title = 'split-pay-ui';
 
-  constructor(public actionIndicator: ActionIndicatorService) {}
+  constructor(
+    public actionIndicator: ActionIndicatorService,
+    private appConfig: AppConfigService
+    ) {}
 }
