@@ -21,12 +21,13 @@ export class AuthService {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
 
-  validateToken(authToken: string, cb): void {
-    let request = { token: authToken }
-    this.http.post(this.appConfig.baseURL + '/auth/login', request, { observe: 'response' })
+  validateToken(idToken: string, cb): void {
+    let request = { token: idToken };
+    const headers = { token: idToken };
+    this.http.post(this.appConfig.baseURL + '/auth/login', {}, { observe: 'response', headers })
       .pipe(map(response => {
         if (response.status === 200) {
-          return true;
+          return true;  
         }
         else if (response.status === 400) {
           return false;
@@ -45,6 +46,8 @@ export class AuthService {
       .subscribe(
         response => {
           cb(response);
+        }, error => {
+          cb(error);
         }
       );
   }
@@ -52,7 +55,10 @@ export class AuthService {
   addUser(input: string, cb): void {
     this.actionIndicator.onInit();
     let request = { username: input };
-    this.http.patch(this.appConfig.baseURL + '/auth/login/username/set', request, { observe: 'response' })
+    const headers = {
+      token: this.appConfig.user.idToken
+    }
+    this.http.patch(this.appConfig.baseURL + '/auth/login/username/set', request, { observe: 'response', headers })
       .pipe(map(response => {
         return (response.status === 200)
       }))

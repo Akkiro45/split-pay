@@ -13,11 +13,12 @@ export class ControlsService {
 
   postMyExpense(body: {}, cb) {
     const headers = {
-      token: this.appConfig.user.authToken
+      token: this.appConfig.user.idToken
     }
     this.actionIndicator.onInit();
     this.http.post(`${this.appConfig.baseURL}/users/expense`, body, { observe: 'response', headers })
       .subscribe((response) => {
+        console.log(response)
         this.actionIndicator.onSuccess();
         cb(response);
       }, (error) => {
@@ -27,10 +28,10 @@ export class ControlsService {
 
   postShareExpense(body: {}, cb) {
     const headers = {
-      token: this.appConfig.user.authToken
+      token: this.appConfig.user.idToken
     }
     this.actionIndicator.onInit();
-    this.http.post(`${this.appConfig.baseURL}/users/expense/shared`, body, { observe: 'response', headers })
+    this.http.post(`${this.appConfig.baseURL}/users/expenses/shared`, body, { observe: 'response', headers })
       .subscribe((response) => {
         this.actionIndicator.onSuccess();
         cb(response);

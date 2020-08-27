@@ -13,7 +13,7 @@ export class TransactionCardService {
   
   settle(body: any, cb) {
     const headers = {
-      token: this.appConfig.user.authToken
+      token: this.appConfig.user.idToken
     }
     this.actionIndicator.onInit();
     this.http.patch(`${this.appConfig.baseURL}/users/settle-expenses`, body, { observe: 'response', headers })

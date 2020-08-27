@@ -30,12 +30,18 @@ export class GroupsComponent implements OnInit {
     });
   }
   onCreateGroup() {
-    const users = this.usersComp.getUsers();
+    let users = this.usersComp.getUsers();
+    users = users.map(user => {
+      return {  
+        username: user
+      }
+    });
     if(users.length && this.groupName !== '') {
       const body = {
-        name: this.groupName,
+        group_name: this.groupName,
         members: users
       }
+      console.log(body)
       this.groupsService.createGroup(body, (data) => {
         console.log(data);
         this.groupName = '';

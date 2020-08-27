@@ -14,15 +14,21 @@ export class GroupsService {
 
   getGroups(cb) {
     const headers = {
-      token: this.appConfig.user.authToken
+      token: this.appConfig.user.idToken
     }
     this.actionIndicator.onInit();
     this.http.get(`${this.appConfig.baseURL}/groups/all`, { observe: 'response', headers })
       .pipe(map(response => {
-        return response.body;
+        console.log(response)
+        if(Array.isArray(response.body)) {
+          return response.body;
+        } else {
+          return [];
+        }
       }))
       .subscribe(response => {
         this.actionIndicator.onSuccess();
+        console.log(response)
         cb(response);
       }, (error) => {
         this.actionIndicator.onFail('Unable fetch groups!');
@@ -31,7 +37,7 @@ export class GroupsService {
 
   createGroup(body, cb) {
     const headers = {
-      token: this.appConfig.user.authToken
+      token: this.appConfig.user.idToken
     }
     this.actionIndicator.onInit();
     this.http.post(`${this.appConfig.baseURL}/groups/create`, body, { observe: 'response', headers })
@@ -45,7 +51,7 @@ export class GroupsService {
 
   getGroup(id, cb) {
     const headers = {
-      token: this.appConfig.user.authToken
+      token: this.appConfig.user.idToken
     }
     this.actionIndicator.onInit();
     this.http.get(`${this.appConfig.baseURL}/groups/${id}`, { observe: 'response', headers })
@@ -66,7 +72,7 @@ export class GroupsService {
 
   createGroupExpense(body, cb) {
     const headers = {
-      token: this.appConfig.user.authToken
+      token: this.appConfig.user.idToken
     }
     this.actionIndicator.onInit();
     this.http.post(`${this.appConfig.baseURL}/groups/expense`, body, { observe: 'response', headers })

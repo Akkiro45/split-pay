@@ -13,7 +13,7 @@
     <div   
       [ngClass]="{rightCard: transaction.my}">
       <app-transaction-card
-        [timeStamp]="transaction.timeStamp"
+        [timeStamp]="transaction.timestamp"
         [amount]="transaction.amount"
         [description]="transaction.description"
         [isExpense]="!transaction.isPaid"

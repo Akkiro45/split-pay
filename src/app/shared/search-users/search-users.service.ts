@@ -14,11 +14,11 @@ export class SearchUsersService {
 
   searchUsers(body: {}, cb) {
     const headers = {
-      token: this.appConfig.user.authToken
+      token: this.appConfig.user.idToken
     }
     this.http.post(`${this.appConfig.baseURL}/users/search`, body, { observe: 'response', headers })
       .pipe(map(response => {
-        return response.body['username'];
+        return true;
       }))
       .subscribe((response) => {
         cb(response);

@@ -18,20 +18,37 @@ export class TotalExpensesService {
   ) { }
 
   getExpenses(cb) {
+    const headers = {
+      token: this.appConfig.user.idToken
+    }
     this.actionIndicator.onInit();
-    this.http.get(this.appConfig.baseURL + '/users/total-expenses', { observe: 'response' })
+    this.http.get(this.appConfig.baseURL + '/users/total-expenses', { observe: 'response', headers })
       .pipe(map(response => {
+        console.log(response);
+        let data = {
+          owed_total: 0,
+          expenses_total: 0,
+          owing_total: 0
+        }
+        // if(response.body.length > 0) {
+        //   response.body.forEach(el => {
+        //     dat[]
+        //   });
+        // }
         return {
           owed_total: response.body['owed_total'],
-          expenses_total: response.body['expenses_total'],
+          expenses_total: response.body['expense_total'],
           owing_total: response.body['owing_total']
         };
       }))
       .subscribe(response => {
+        console.log(response)
         this.actionIndicator.onSuccess();
         cb(response);
       }, (error) => {
         this.actionIndicator.onFail('Update username!');
+        
+        console.log(error);
         if (error.status === 405) {
           this.router.navigate(['/username']);
         }

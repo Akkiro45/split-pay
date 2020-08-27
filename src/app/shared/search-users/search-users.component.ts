@@ -22,7 +22,7 @@ export class SearchUsersComponent implements OnInit {
       username: this.search
     }
     this.searchUsersService.searchUsers(body, (data) => {
-      this.searchUsers.unshift(data);
+      this.searchUsers.unshift(this.search);
     });
   }
   getUsers() {
