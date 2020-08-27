@@ -1,6 +1,5 @@
-import { Component, OnInit, resolveForwardRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TotalExpensesService } from '../services/total-expenses.service';
-import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-dashboard',
@@ -14,21 +13,20 @@ export class DashboardComponent implements OnInit {
   owing_total: number;
 
   constructor(
-    private expService: TotalExpensesService,
-    private router: Router,
-    private route: ActivatedRoute
+    private expService: TotalExpensesService
   ) { }
 
   ngOnInit(): void {
-    this.expService.getExpenses()
-      .subscribe(respose => {
-        this.owed_total = respose.valueOf()['owed_total'];
-        this.expenses_total = respose.valueOf()['expenses_total'];
-        this.owing_total = respose.valueOf()['owing_total'];
-      }, (error: Response) => {
-        if (error.status === 405) {
-          this.router.navigate(['/username']);
-        }
-      });
+    setTimeout(() => {
+      this.fetchExpenses();
+    }, 100);
+  }
+
+  fetchExpenses() {
+    this.expService.getExpenses((data) => {
+      this.owed_total = data['owed_total'],
+        this.expenses_total = data['expenses_total'],
+        this.owing_total = data['owing_total']
+    });
   }
 }

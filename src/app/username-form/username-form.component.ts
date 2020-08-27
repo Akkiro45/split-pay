@@ -30,19 +30,21 @@ export class UsernameFormComponent implements OnInit {
 
   onSubmit() {
     let input = this.controlsForm.value.username;
-    this.usernameValid = this.authService.isFirst(input);
-    if (this.usernameValid) {
-      let isAdded = this.authService.addUser(input);
-      if (isAdded) {
-        localStorage.setItem("key", input);
-        let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
-        this.router.navigate([returnUrl || '/dashboard']);
+    this.authService.isFirst(input, (data) => {
+      if (data.status === 404) {
+        this.authService.addUser(input, (data) => {
+          if (data) {
+            localStorage.setItem("key", input);
+            let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+            this.router.navigate([returnUrl || '/dashboard']);
+          }
+        });
       }
-    }
-    else {
-      this.controlsForm.reset();
-      alert("Username already exists!! Enter another username.")
-    }
+      else {
+        this.controlsForm.reset();
+        alert("Username already exists!! Enter another username.")
+      }
+    });
   }
 
 }

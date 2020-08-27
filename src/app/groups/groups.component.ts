@@ -23,7 +23,7 @@ export class GroupsComponent implements OnInit {
       this.fetchGroups();
     }, 100);
   }
-  
+
   fetchGroups() {
     this.groupsService.getGroups((data) => {
       this.groups = data;

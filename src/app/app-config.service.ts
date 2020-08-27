@@ -6,8 +6,4 @@ export class AppConfigService {
   baseURL: string = 'https://splitpaydemo1.herokuapp.com/api';
   user: SocialUser;
 
-  setUser(user: SocialUser) {
-    this.user = user;
-  }
-
 }

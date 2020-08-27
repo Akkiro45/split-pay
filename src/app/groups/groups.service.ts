@@ -6,12 +6,12 @@ import { ActionIndicatorService } from '../shared/action-indicator/action-indica
 
 @Injectable()
 export class GroupsService {
-  
+
   constructor(
-    private http: HttpClient, 
+    private http: HttpClient,
     private appConfig: AppConfigService,
-    private actionIndicator: ActionIndicatorService) {}
-  
+    private actionIndicator: ActionIndicatorService) { }
+
   getGroups(cb) {
     const headers = {
       token: this.appConfig.user.authToken
