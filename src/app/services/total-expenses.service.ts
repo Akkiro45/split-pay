@@ -35,6 +35,26 @@ export class TotalExpensesService {
         if (error.status === 405) {
           this.router.navigate(['/username']);
         }
-      });;
+      });
+  }
+
+  getOwedToOthers(cb) {
+    this.http.get(this.appConfig.baseURL + '/users/owes', { observe: 'response' })
+      .pipe(map(response => {
+        return response.body;
+      }))
+      .subscribe(response => {
+        cb(response);
+      });
+  }
+
+  getOwedToMe(cb) {
+    this.http.get(this.appConfig.baseURL + '/users/owed', { observe: 'response' })
+      .pipe(map(response => {
+        return response.body;
+      }))
+      .subscribe(response => {
+        cb(response);
+      });
   }
 }

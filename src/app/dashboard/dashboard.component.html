@@ -1,31 +1,74 @@
-<div class="cards">
-    <div class="row">
-        <div class="col s6 m3 offset-s3 offset-m4">
-            <div class="card total-expense">
-                <div class="card-content">
-                    <span class="card-title">Total Expense</span>
-                    <p>Amount: {{expenses_total}}</p>
+<div class="">
+    <div class="cards">
+        <div class="row">
+            <div class="col s6 m3 offset-s3 offset-m4">
+                <div class="card total-expense">
+                    <div class="card-content">
+                        <span class="card-title">Total Expense</span>
+                        <p>Amount: {{expenses_total}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6 m3">
+                <div class="card owed-to-me">
+                    <div class="card-content">
+                        <span class="card-title">Owed to Me</span>
+                        <p>Amount: {{owed_total}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s6 m3 offset-m5">
+                <div class="card owed-by-me">
+                    <div class="card-content">
+                        <span class="card-title">Owed by Me</span>
+                        <p>Amount: {{owing_total}}</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="row">
-        <div class="col s6 m3">
-            <div class="card owed-to-me">
-                <div class="card-content">
-                    <span class="card-title">Owed to Me</span>
-                    <p>Amount: {{owed_total}}</p>
-                </div>
-            </div>
+        <div class="col s12 m6">
+            <ul class="collection with-header">
+                <li class="collection-header">
+                    <h5>Friends owing to me:</h5>
+                </li>
+                <li class="collection-item">
+                    <div class="row">
+                        <div class="col s6">Name</div>
+                        <div class="col s1 offset-s3">Amount</div>
+                    </div>
+                </li>
+                <li class="collection-item" *ngFor="let user of usersOwing;">
+                    <div class="row">
+                        <div class="col s6">{{user.username}}</div>
+                        <div class="col s1 offset-s3">{{user.amount}}</div>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <div class="col s6 m3 offset-m5">
-            <div class="card owed-by-me">
-                <div class="card-content">
-                    <span class="card-title">Owed by Me</span>
-                    <p>Amount: {{owing_total}}</p>
-                </div>
-            </div>
+        <div class="col s12 m6">
+            <ul class="collection with-header">
+                <li class="collection-header">
+                    <h5>Friends I owe to:</h5>
+                </li>
+                <li class="collection-item">
+                    <div class="row">
+                        <div class="col s6">Name</div>
+                        <div class="col s1 offset-s3">Amount</div>
+                    </div>
+                </li>
+                <li class="collection-item" *ngFor="let user of usersOwedTo;">
+                    <div class="row">
+                        <div class="col s6">{{user.username}}</div>
+                        <div class="col s1 offset-s3">{{user.amount}}</div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
+
 </div>
