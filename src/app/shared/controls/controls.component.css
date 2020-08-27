@@ -19,7 +19,7 @@ form {
 .custom-btn {
   height: 29px;
   max-width: 120px;
-  width: 17%;
+  width: 22%;
   color: #FFFFFF;
   border: none;
   border-radius: 5px;
@@ -36,40 +36,3 @@ form {
 .settle {
   background-color: #8BC34A;
 }
-
-/* form {
-  display: flex;
-  align-items: center;
-}
-.amt-input,
-.desc-input {
-  border-radius: 5px; 
-  height: 25px;
-  padding: 0 5px;
-  width: 15%;
-  width: 20px;
-  margin: 0 2px;
-}
-.desc-input {
-  width: 30%;
-}
-.btn1 {
-  height: 29px;
-  max-width: 120px;
-  width: 17%;
-  color: #FFFFFF;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 0 2px;
-}
-.btn1:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
-}
-.expense {
-  background-color: #F44336;
-}
-.settle {
-  background-color: #8BC34A;
-} */

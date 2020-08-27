@@ -17,17 +17,6 @@ export class SearchUsersComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // onSearch() {
-  //   const tempUsers = [
-  //     'akshay',
-  //     'rohit',
-  //     'virat',
-  //     'dhoni'
-  //   ]
-  //   if(tempUsers.includes(this.search)) {
-  //     this.searchUsers.unshift(this.search);
-  //   }
-  // }
   onSearch() {
     const body = {
       username: this.search
@@ -42,11 +31,14 @@ export class SearchUsersComponent implements OnInit {
   resetUsers() {
     this.users = [];
   }
-  onAddUser() {
-    this.users = this.users.filter(user => user !== this.search);
-    this.users.unshift(this.search);
+  onAddUser(searchUser: string) {
+    this.users = this.users.filter(user => user !== searchUser);
+    this.users.unshift(searchUser);
     this.search = '';
     this.searchUsers = [];
+  }
+  onRmvUser(username: string) {
+    this.users = this.users.filter(user => user !== username);
   }
 
 }

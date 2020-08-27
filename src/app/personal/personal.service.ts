@@ -12,8 +12,11 @@ export class PesronalService {
     private actionIndicator: ActionIndicatorService) {}
   
   getExpenses(cb) {
+    const headers = {
+      token: this.appConfig.user.authToken
+    }
     this.actionIndicator.onInit();
-    this.http.get(`${this.appConfig.baseURL}/users/expense`, { observe: 'response' })
+    this.http.get(`${this.appConfig.baseURL}/users/expense`, { observe: 'response', headers })
       .subscribe(response => {
         this.actionIndicator.onSuccess();
         cb(response);

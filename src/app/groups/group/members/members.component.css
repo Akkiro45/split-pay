@@ -3,7 +3,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 100;
+  z-index: 1;
 }
 .users {
   max-height: 200px;
@@ -16,12 +16,13 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 10px;
   color: #ffffff;
   background-color: #FF5722;
 }
 .user {
-  background-color: #eeeeee;
+  background-color: #ffffee;
   display: flex;
   height: 25px;
   border-bottom: 1px solid #cccccc;

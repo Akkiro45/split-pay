@@ -12,8 +12,11 @@ export class TransactionCardService {
     private actionIndicator: ActionIndicatorService) {}
   
   settle(body: any, cb) {
+    const headers = {
+      token: this.appConfig.user.authToken
+    }
     this.actionIndicator.onInit();
-    this.http.patch(`${this.appConfig.baseURL}/users/settle-expenses`, body, { observe: 'response' })
+    this.http.patch(`${this.appConfig.baseURL}/users/settle-expenses`, body, { observe: 'response', headers })
       .subscribe(response => {
         this.actionIndicator.onSuccess();
         cb(response);

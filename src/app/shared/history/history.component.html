@@ -1,6 +1,14 @@
 <div class="history" #scrollMe  >
+  <div class="search-bar" >
+    <input 
+    type='text'
+    placeholder="searh..."
+    class="search-input"
+    [(ngModel)]="search"
+    (input)="onSearch()" />
+  </div>
   <div 
-    *ngFor="let transaction of history;"
+    *ngFor="let transaction of transactionHistory;"
     class="card-container">
     <div   
       [ngClass]="{rightCard: transaction.my}">

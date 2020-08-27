@@ -13,7 +13,10 @@ export class SearchUsersService {
     private actionIndicator: ActionIndicatorService) { }
 
   searchUsers(body: {}, cb) {
-    this.http.post(`${this.appConfig.baseURL}/users/search`, body, { observe: 'response' })
+    const headers = {
+      token: this.appConfig.user.authToken
+    }
+    this.http.post(`${this.appConfig.baseURL}/users/search`, body, { observe: 'response', headers })
       .pipe(map(response => {
         return response.body['username'];
       }))

@@ -8,13 +8,16 @@
     <div 
       class="search-user" 
       *ngFor="let searchUser of searchUsers;"
-      (click)="onAddUser()" >
+      (click)="onAddUser(searchUser)" >
       {{ searchUser }}
     </div>
   </div>
   <div class="users" *ngIf="users.length" >
-    <div class="user" *ngFor="let user of users;" >
-      {{ user }}
+    <div class="user" *ngFor="let user of users;">
+      <div>
+        {{ user }}
+      </div>
+      <i class="tiny material-icons" (click)="onRmvUser(user)" >clear</i>
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { GroupsService } from './groups.service';
 
@@ -15,6 +15,7 @@ export class GroupsComponent implements OnInit {
   groups = [
     // { id: 1, name: 'group1', members: 5 },
   ];
+
   constructor(private router: Router, private groupsService: GroupsService) { }
 
   ngOnInit(): void {
@@ -31,11 +32,6 @@ export class GroupsComponent implements OnInit {
   onCreateGroup() {
     const users = this.usersComp.getUsers();
     if(users.length && this.groupName !== '') {
-      // this.groups.unshift({
-      //   id: this.groups.length,
-      //   name: this.groupName,
-      //   members: users.length
-      // });
       const body = {
         name: this.groupName,
         members: users

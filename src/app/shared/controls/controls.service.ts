@@ -12,8 +12,11 @@ export class ControlsService {
     private actionIndicator: ActionIndicatorService) { }
 
   postMyExpense(body: {}, cb) {
+    const headers = {
+      token: this.appConfig.user.authToken
+    }
     this.actionIndicator.onInit();
-    this.http.post(`${this.appConfig.baseURL}/users/expense`, body, { observe: 'response' })
+    this.http.post(`${this.appConfig.baseURL}/users/expense`, body, { observe: 'response', headers })
       .subscribe((response) => {
         this.actionIndicator.onSuccess();
         cb(response);
@@ -23,8 +26,11 @@ export class ControlsService {
   }
 
   postShareExpense(body: {}, cb) {
+    const headers = {
+      token: this.appConfig.user.authToken
+    }
     this.actionIndicator.onInit();
-    this.http.post(`${this.appConfig.baseURL}/users/expense/shared`, body, { observe: 'response' })
+    this.http.post(`${this.appConfig.baseURL}/users/expense/shared`, body, { observe: 'response', headers })
       .subscribe((response) => {
         this.actionIndicator.onSuccess();
         cb(response);

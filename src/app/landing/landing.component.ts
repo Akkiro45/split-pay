@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { SocialUser, SocialAuthService } from "angularx-social-login";
 import { Router, ActivatedRoute } from "@angular/router";
+import { AppConfigService } from '../app-config.service';
 
 @Component({
   selector: 'app-landing',
@@ -18,7 +19,8 @@ export class LandingComponent implements OnInit {
     private authService: AuthService,
     private socialAuthService: SocialAuthService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private appConfig: AppConfigService
   ) { }
 
   ngOnInit(): void { }
@@ -29,6 +31,7 @@ export class LandingComponent implements OnInit {
       this.user = user;
       this.loggedIn = (user != null);
       if (this.loggedIn) {
+        this.appConfig.setUser(user);
         this.tokenValidated = this.authService.validateToken(user.authToken);
         if (this.tokenValidated) {
           let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
