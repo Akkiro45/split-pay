@@ -1,16 +1,17 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { SocialUser, SocialAuthService } from "angularx-social-login";
 import { Router, ActivatedRoute } from "@angular/router";
+import { AppConfigService } from '../app-config.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnChanges {
 
-  user: SocialUser;
+  @Input() user: SocialUser;
   loggedIn: boolean;
   idToken: any;
   tokenValidated: boolean;
@@ -22,21 +23,32 @@ export class HeaderComponent implements OnInit {
     private authService: AuthService,
     private socialAuthService: SocialAuthService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private appConfig: AppConfigService
   ) { }
 
   ngOnInit(): void {
-    this.socialAuthService.authState.subscribe((user) => {
-      this.user = user;
-      //console.log(user.idToken);
-      this.loggedIn = (user != null);
-      this.username = localStorage.getItem("key");
-    });
+    // this.socialAuthService.authState.subscribe((user) => {
+    //   this.user = user;
+    //   //console.log(user.idToken);
+    //   this.loggedIn = (user != null);
+    //   this.username = localStorage.getItem("key");
+    // });
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    this.setValues(changes.user.currentValue);
+  }
+
+  setValues(user) {
+    this.loggedIn = (user != null);
+    if(this.loggedIn) {
+      this.username = user.firstName;
+    }
   }
 
 
-  signOut(username): void {
-    this.authService.signOut(username);
+  signOut(): void {
+    this.authService.signOut();
   }
 }
 

@@ -32,7 +32,12 @@ export class PersonalComponent implements OnInit {
   }
 
   onShareExpense(data: any) {
-    const users = this.usersComp.getUsers();
+    let users = this.usersComp.getUsers();
+    users = users.map(user => {
+      return {  
+        username: user
+      }
+    });
     if(users.length > 0) {
       const body = {
         members: users,

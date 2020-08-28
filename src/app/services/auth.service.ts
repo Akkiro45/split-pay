@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { AppConfigService } from '../app-config.service';
 import { map } from 'rxjs/operators';
 import { ActionIndicatorService } from '../shared/action-indicator/action-indicator.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class AuthService {
     private socialAuthService: SocialAuthService,
     private http: HttpClient,
     private appConfig: AppConfigService,
-    private actionIndicator: ActionIndicatorService
+    private actionIndicator: ActionIndicatorService,
+    private router: Router
   ) { }
 
   signInWithGoogle(): void {
@@ -72,18 +74,20 @@ export class AuthService {
       );
   }
 
-  signOut(user: string): void {
+  signOut(): void {
     this.actionIndicator.onInit();
-    let request = { username: user }
+    let request = {  }
     const headers = {
       token: this.appConfig.user.idToken
     }
-    this.socialAuthService.signOut();
+    // this.socialAuthService.signOut();
     this.http.post(this.appConfig.baseURL + '/auth/logout', request, { observe: 'response', headers })
       .subscribe(
         response => {
+          localStorage.removeItem('user');
           this.appConfig.user = null;
           this.actionIndicator.onSuccess();
+          this.router.navigate(['/']);
         }, (error: Response) => {
           if (error.status === 200) {
             this.actionIndicator.onFail('Error while logging out!!');

@@ -35,6 +35,7 @@ export class LandingComponent implements OnInit {
         this.appConfig.user = user; 
         this.authService.validateToken(user.idToken, (data) => {
           if (data) {
+            localStorage.setItem('user', JSON.stringify(user));
             let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
             this.router.navigate([returnUrl || '/dashboard']);
           }
