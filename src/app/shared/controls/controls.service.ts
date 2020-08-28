@@ -18,7 +18,6 @@ export class ControlsService {
     this.actionIndicator.onInit();
     this.http.post(`${this.appConfig.baseURL}/users/expense`, body, { observe: 'response', headers })
       .subscribe((response) => {
-        console.log(response)
         this.actionIndicator.onSuccess();
         cb(response);
       }, (error) => {

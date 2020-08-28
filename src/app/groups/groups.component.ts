@@ -43,7 +43,6 @@ export class GroupsComponent implements OnInit {
       }
       console.log(body)
       this.groupsService.createGroup(body, (data) => {
-        console.log(data);
         this.groupName = '';
         this.usersComp.resetUsers();
         this.modal.toggleModal();

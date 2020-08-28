@@ -19,7 +19,6 @@ export class GroupsService {
     this.actionIndicator.onInit();
     this.http.get(`${this.appConfig.baseURL}/groups/all`, { observe: 'response', headers })
       .pipe(map(response => {
-        console.log(response)
         if(Array.isArray(response.body)) {
           return response.body;
         } else {
@@ -28,7 +27,6 @@ export class GroupsService {
       }))
       .subscribe(response => {
         this.actionIndicator.onSuccess();
-        console.log(response)
         cb(response);
       }, (error) => {
         this.actionIndicator.onFail('Unable fetch groups!');

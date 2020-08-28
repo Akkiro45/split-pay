@@ -42,14 +42,12 @@ export class DashboardComponent implements OnInit {
 
   owedToOthers() {
     this.expService.getOwedToOthers((data) => {
-      console.log(data);
       this.usersOwedTo = data;
     });
   };
 
   owedToMe() {
     this.expService.getOwedToMe((data) => {
-      console.log(data);
       this.usersOwing = data;
     });
   };

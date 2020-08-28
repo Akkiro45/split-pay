@@ -31,11 +31,9 @@ export class UsernameFormComponent implements OnInit {
   onSubmit() {
     let input = this.controlsForm.value.username;
     this.authService.isFirst(input, (data) => {
-      console.log(data)
       if (data.status === 404) {
         this.authService.addUser(input, (data) => {
           if (data) {
-            console.log(data)
             localStorage.setItem("key", input);
             let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
             this.router.navigate([returnUrl || '/dashboard']);

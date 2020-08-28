@@ -31,7 +31,6 @@ export class GroupComponent implements OnInit {
       description: data.body.description
     }
     this.groupsService.createGroupExpense(body, (data) => {
-      console.log(data);
       this.fetchGroup();
     });
   }

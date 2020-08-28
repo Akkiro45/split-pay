@@ -1,7 +1,7 @@
 <nav>
     <div class="nav-wrapper">
         <a href="#!" class="brand-logo"><span style="font-weight: 700">Split</span> pay</a>
-        <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <a href="#" data-target="mobile" class="sidenav-trigger" *ngIf="appConfig.user" ><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down header">
             <!-- <li *ngIf="!loggedIn"><a (click)="signIn()"><i class="fa fa-sign-in right"></i>Sign In</a></li> -->
             <li *ngIf="loggedIn"><i class="material-icons right">account_circle</i>{{username}}</li>

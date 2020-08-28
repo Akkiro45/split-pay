@@ -28,13 +28,12 @@ export class LandingComponent implements OnInit {
   signIn(): void {
     this.authService.signInWithGoogle();
     this.socialAuthService.authState.subscribe((user) => {
-      this.user = user;
-      console.log(user)
       this.loggedIn = (user != null);
-      if (this.loggedIn) {
-        this.appConfig.user = user; 
+      if (this.loggedIn) { 
         this.authService.validateToken(user.idToken, (data) => {
           if (data) {
+            this.user = user;
+            this.appConfig.user = user;
             localStorage.setItem('user', JSON.stringify(user));
             let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
             this.router.navigate([returnUrl || '/dashboard']);

@@ -24,16 +24,10 @@ export class HeaderComponent implements OnInit, OnChanges {
     private socialAuthService: SocialAuthService,
     private router: Router,
     private route: ActivatedRoute,
-    private appConfig: AppConfigService
+    public appConfig: AppConfigService
   ) { }
 
   ngOnInit(): void {
-    // this.socialAuthService.authState.subscribe((user) => {
-    //   this.user = user;
-    //   //console.log(user.idToken);
-    //   this.loggedIn = (user != null);
-    //   this.username = localStorage.getItem("key");
-    // });
   }
   ngOnChanges(changes: SimpleChanges) {
     this.setValues(changes.user.currentValue);
@@ -45,8 +39,6 @@ export class HeaderComponent implements OnInit, OnChanges {
       this.username = user.firstName;
     }
   }
-
-
   signOut(): void {
     this.authService.signOut();
   }

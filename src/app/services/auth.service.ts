@@ -24,7 +24,6 @@ export class AuthService {
   }
 
   validateToken(idToken: string, cb): void {
-    let request = { token: idToken };
     const headers = { token: idToken };
     this.http.post(this.appConfig.baseURL + '/auth/login', {}, { observe: 'response', headers })
       .pipe(map(response => {
@@ -76,7 +75,7 @@ export class AuthService {
 
   signOut(): void {
     this.actionIndicator.onInit();
-    let request = {  }
+    let request = { };
     const headers = {
       token: this.appConfig.user.idToken
     }

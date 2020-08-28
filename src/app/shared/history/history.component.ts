@@ -28,7 +28,6 @@ export class HistoryComponent implements OnInit, OnChanges {
   }
 
   filterTransaction(history) {
-    console.log(history)
     return history.filter(transaction => transaction.amount !== 0);
   }
   scrollToBottom(): void {
@@ -40,7 +39,7 @@ export class HistoryComponent implements OnInit, OnChanges {
     const pattern = new RegExp(this.search, 'i');
     if(this.search !== '') {
       this.transactionHistory = this.history.filter(transaction => {
-        if(transaction.amount !== 0) {
+        if(transaction.amount > 0) {
           if(pattern.test(transaction.amount) || pattern.test(transaction.description)) {
             return true;
           } else {

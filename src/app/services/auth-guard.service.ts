@@ -22,14 +22,6 @@ export class AuthGuard implements CanActivate {
     const user = JSON.parse(localStorage.getItem('user'));
     this.appConfig.user = user;
     this.loggedIn = user ? true : false;
-    // this.socialAuthService.authState.subscribe((user) => {
-    //   if (user != null) {
-    //     this.loggedIn = true;
-    //   }
-    //   else {
-    //     this.loggedIn = false;
-    //   }
-    // });
     if (this.loggedIn) {
       return true;
     }

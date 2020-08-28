@@ -19,7 +19,6 @@ export class PesronalService {
     this.actionIndicator.onInit();
     this.http.get(`${this.appConfig.baseURL}/users/expenses`, { observe: 'response', headers })
       .pipe(map(response => {
-        console.log(response)
         if(Array.isArray(response.body)) {
           return response.body.map(transaction => {
             return {
@@ -38,7 +37,6 @@ export class PesronalService {
         this.actionIndicator.onSuccess();
         cb(response);
       }, (error) => {
-        console.log(error);
         this.actionIndicator.onFail('Unable fetch expenses!');
       });
   }

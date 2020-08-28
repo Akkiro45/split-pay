@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import * as moment from 'moment';
 import { TransactionCardService } from './transaction-card.service';
 import { PesronalService } from 'src/app/personal/personal.service';
 
@@ -24,8 +23,6 @@ export class TransactionCardComponent implements OnInit {
     private personalService: PesronalService) { }
 
   ngOnInit(): void {
-    // this.time = moment(this.timeStamp).format('ddd, MMM D YYYY, h:mm a'); // Mon, Aug 24 2020, 4:40 pm
-    // this.time = this.timeStamp;
   }
 
   onSettle() {
