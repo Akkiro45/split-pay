@@ -3,7 +3,7 @@ import { SocialUser } from "angularx-social-login";
 
 @Injectable()
 export class AppConfigService {
-  baseURL: string = 'https://splitpaydemo2.herokuapp.com/api';
+  baseURL: string = 'https://splitpaydemo4.herokuapp.com/api';
   user: SocialUser;
   
 }

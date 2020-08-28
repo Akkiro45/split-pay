@@ -4,7 +4,7 @@
         <a href="#" data-target="mobile" class="sidenav-trigger" *ngIf="appConfig.user" ><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down header">
             <!-- <li *ngIf="!loggedIn"><a (click)="signIn()"><i class="fa fa-sign-in right"></i>Sign In</a></li> -->
-            <li *ngIf="loggedIn"><i class="material-icons right">account_circle</i>{{username}}</li>
+            <!-- <li *ngIf="loggedIn"><i class="material-icons right">account_circle</i>{{username}}</li> -->
             <li *ngIf="loggedIn"><a (click)="signOut(user.name)"><i class="fa fa-sign-out right"></i>Logout</a></li>
         </ul>
     </div>
@@ -12,6 +12,6 @@
 
 <ul class="sidenav mobile" id="mobile">
     <!-- <li *ngIf="!loggedIn"><a (click)="signIn()"><i class="fa fa-sign-in right"></i>Sign In</a></li> -->
-    <li *ngIf="loggedIn"><a><i class="material-icons right">account_circle</i>{{username}}</a></li>
+    <!-- <li *ngIf="loggedIn"><a><i class="material-icons right">account_circle</i>{{username}}</a></li> -->
     <li *ngIf="loggedIn"><a (click)="signOut()"><i class="fa fa-sign-out right"></i>Logout</a></li>
 </ul>
