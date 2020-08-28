@@ -1,28 +1,35 @@
 .cards{
-    margin-top: 5em;
+    margin-top: 1em;
 }
 
-.card{
-    border-radius: 0.5em;
+.content{
+    border-radius: 5em;
+    text-align: center;
 }
 
 .total-expense{
     border: 1px;
+    border-radius: 2em;
     border-style: solid;
     border-color: #ff5722;
     background-color: #ffffee;
+    text-align: center;
 }
 
 .owed-to-me{
+    border-radius: 5em;
     border: 1px;
     border-style: solid;
     border-color: #8bc34a;
     background-color: #f1f8e9;
+    text-align: center;
 }
 
 .owed-by-me{
+    border-radius: 5em;
     border: 1px;
     border-style: solid;
     border-color: #f44336;
+    text-align: center;
     background-color: #ffebee;
 }

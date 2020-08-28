@@ -29,7 +29,7 @@ export class AuthService {
     this.http.post(this.appConfig.baseURL + '/auth/login', {}, { observe: 'response', headers })
       .pipe(map(response => {
         if (response.status === 200) {
-          return true;  
+          return true;
         }
         else if (response.status === 400) {
           return false;

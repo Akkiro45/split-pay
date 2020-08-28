@@ -29,7 +29,7 @@ export class TotalExpensesService {
           expenses_total: 0,
           owing_total: 0
         }
-        if(response.body.length > 0) {
+        if (response.body.length > 0) {
           response.body.forEach(el => {
             Object.keys(el).forEach(key => {
               data[key] = el[key];
